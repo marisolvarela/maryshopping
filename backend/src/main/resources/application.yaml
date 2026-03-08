@@ -1,0 +1,37 @@
+server:
+  port: 8089
+  servlet:
+    context-path: /maryshopping
+
+spring:
+  application:
+    name: backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/maryshopping
+    username: maryshopping
+    password: maryshopping
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+
+flywayconf:
+  customers:
+    schemas:
+      - customers
+    locations:
+      - "classpath:customers/db/migration/postgresql"
+  orders:
+    schemas:
+      - orders
+    locations:
+      - "classpath:orders/db/migration/postgresql"
+  catalog:
+    schemas:
+      - catalog
+    locations:
+      - "classpath:catalog/db/migration/postgresql"
+  reports:
+    schemas:
+      - reports
+    locations:
+      - "classpath:reports/db/migration/postgresql"

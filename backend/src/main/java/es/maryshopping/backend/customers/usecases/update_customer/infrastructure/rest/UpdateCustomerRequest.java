@@ -1,0 +1,20 @@
+package es.maryshopping.backend.customers.usecases.update_customer.infrastructure.rest;
+
+public record UpdateCustomerRequest(
+        String firstName,
+        String lastName,
+        String dni,
+        AddressRequest billingAddress,
+        AddressRequest shippingAddress,
+        String phoneNumber,
+        String emailAddress
+) {
+    public record AddressRequest(
+            String street,
+            String city,
+            String province,
+            String postalCode,
+            String country
+    ) {
+    }
+}
