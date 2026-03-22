@@ -50,6 +50,7 @@ public class CreateCustomerController {
                 .dni(request.dni())
                 .phoneNumber(request.phoneNumber())
                 .emailAddress(request.emailAddress())
+                .password(request.password())
                 .billingAddress(billingAddress)
                 .shippingAddress(shippingAddress)
                 .build();

@@ -9,6 +9,7 @@ public record CreateCustomerCommand(
         String dni,
         String phoneNumber,
         String emailAddress,
+        String password,
         AddressCommand billingAddress,
         AddressCommand shippingAddress
 ) {

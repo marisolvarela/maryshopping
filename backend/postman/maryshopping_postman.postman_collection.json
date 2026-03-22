@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"cabello\"\n}",
+							"raw": "{\n    \"name\":\"piel\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -120,6 +120,36 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -132,7 +162,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\":\"Juan\",\n    \"lastName\":\"varela diaz\",\n    \"dni\":\"33176257M\",\n    \"phoneNumber\":\"765657850\",\n    \"emailAddress\":\"juan@gmail.com\",\n    \"billingAddress\":{\n        \"street\":\"Calle ramon y cajal 19\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"24200\",\n        \"country\":\"Spain\"\n    },\n    \"shippingAddress\":{\n        \"street\":\"Calle ramon y cajal 19\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"44200\",\n        \"country\":\"Spain\"\n    }\n}",
+							"raw": "{\n    \"firstName\":\"alicia\",\n    \"lastName\":\"sol alonso\",\n    \"dni\":\"89324357P\",\n    \"phoneNumber\":\"630207860\",\n    \"emailAddress\":\"alicia@gmail.com\",\n    \"password\":\"alicia\",\n    \"billingAddress\":{\n        \"street\":\"Calle real 11\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"24410\",\n        \"country\":\"Spain\"\n    },\n    \"shippingAddress\":{\n        \"street\":\"Calle real 11\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"44410\",\n        \"country\":\"Spain\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -157,13 +187,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{root}}/customers/2dc102e6-2729-4117-985f-4e6fe08e89ac",
+							"raw": "{{root}}/customers/c2d87ec1-d3fc-42ac-9f32-8a205bf3e2d9",
 							"host": [
 								"{{root}}"
 							],
 							"path": [
 								"customers",
-								"2dc102e6-2729-4117-985f-4e6fe08e89ac"
+								"c2d87ec1-d3fc-42ac-9f32-8a205bf3e2d9"
 							]
 						}
 					},
@@ -176,7 +206,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"firstName\":\"maria\",\n    \"lastName\":\"perez gonzalez\",\n    \"dni\":\"33176257M\",\n    \"phoneNumber\":\"445201448\",\n    \"emailAddress\":\"maria@gmail.com\",\n    \"billingAddress\":{\n        \"street\":\"Calle el cristo 23\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"24403\",\n        \"country\":\"Spain\"\n    },\n    \"shippingAddress\":{\n        \"street\":\"calle el cristo 23\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"44403\",\n        \"country\":\"Spain\"\n    }\n} \n",
+							"raw": "{\n    \"firstName\":\"carlos\",\n    \"lastName\":\"martinez alonso\",\n    \"dni\":\"34324357P\",\n    \"phoneNumber\":\"630207860\",\n    \"emailAddress\":\"carlos@gmail.com\",\n    \"password\":\"carlos\",\n    \"billingAddress\":{\n        \"street\":\"Calle santiago 21\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"24420\",\n        \"country\":\"Spain\"\n    },\n    \"shippingAddress\":{\n        \"street\":\"Calle santiago 21\",\n        \"city\":\"ponferrada\",\n        \"province\":\"leon\",\n        \"postalCode\":\"44420\",\n        \"country\":\"Spain\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -184,13 +214,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{root}}/customers/ed0e9f6d-866f-457a-a90b-eb0b2a13550b",
+							"raw": "{{root}}/customers/41eb3214-c363-4c47-8fda-ca28ae9b8fc8",
 							"host": [
 								"{{root}}"
 							],
 							"path": [
 								"customers",
-								"ed0e9f6d-866f-457a-a90b-eb0b2a13550b"
+								"41eb3214-c363-4c47-8fda-ca28ae9b8fc8"
 							]
 						}
 					},
@@ -202,13 +232,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{root}}/customers/6c6af313-2eb3-4a00-8a5d-1e09c11f52db",
+							"raw": "{{root}}/customers/258ea8f6-f911-495f-9cc5-b92afa19b01d",
 							"host": [
 								"{{root}}"
 							],
 							"path": [
 								"customers",
-								"6c6af313-2eb3-4a00-8a5d-1e09c11f52db"
+								"258ea8f6-f911-495f-9cc5-b92afa19b01d"
 							]
 						}
 					},
@@ -226,6 +256,501 @@
 							],
 							"path": [
 								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "providers",
+			"item": [
+				{
+					"name": "create_provider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Pepe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/catalog/products/providers",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_provider",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{root}}/catalog/products/providers/42e6fdb5-f9e7-4bcf-bbd3-37638924bf3a",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"providers",
+								"42e6fdb5-f9e7-4bcf-bbd3-37638924bf3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_provider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root}}/catalog/products/providers/64b6b975-737c-48c2-9d64-70951a1e2252",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"providers",
+								"64b6b975-737c-48c2-9d64-70951a1e2252"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root}}/catalog/products/providers",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_provider",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Manuela\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/catalog/products/providers/42e6fdb5-f9e7-4bcf-bbd3-37638924bf3a",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"providers",
+								"42e6fdb5-f9e7-4bcf-bbd3-37638924bf3a"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "create_product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"avene\",\n\"categoryId\":\"0e804a33-6a70-4452-b890-36bdb8de1597\",\n\"description\":\"crema solar  facial\",\n\"providerId\":\"13372ebb-ff62-4b7c-824e-b1cf221d2b16\",\n\"providerReference\":\"llpo21054jku54p\",\n\"price\":22.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/catalog/products",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{root}}/catalog/products/eb7bd49a-6e33-40b5-acd4-9e89cd93bf4e",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"eb7bd49a-6e33-40b5-acd4-9e89cd93bf4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root}}/catalog/products/d05891b5-68bb-4112-a839-64095f22e3d8",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"d05891b5-68bb-4112-a839-64095f22e3d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"rochas\",\n    \"categoryId\":\"0e804a33-6a70-4452-b890-36bdb8de1597\",\n    \"description\":\"crema solar factor 50\",\n    \"provider\":\"13372ebb-ff62-4b7c-824e-b1cf221d2b16\",\n    \"providerReference\":\"llpo21l94jku54p\",\n    \"price\":30.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/catalog/products/eb7bd49a-6e33-40b5-acd4-9e89cd93bf4e",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"products",
+								"eb7bd49a-6e33-40b5-acd4-9e89cd93bf4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_products_in_category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root}}/catalog/categories/0e804a33-6a70-4452-b890-36bdb8de1597/products",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"catalog",
+								"categories",
+								"0e804a33-6a70-4452-b890-36bdb8de1597",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "get_customer_token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Verificar que la respuesta es 200",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Parsear el JSON de la respuesta",
+									"const jsonResponse = pm.response.json();",
+									"",
+									"// Extraer los valores del JSON y guardarlos en variables de entorno",
+									"pm.environment.set(\"accessToken\", jsonResponse.accessToken);",
+									"pm.environment.set(\"refreshToken\", jsonResponse.refreshToken);",
+									"pm.environment.set(\"tokenType\", jsonResponse.tokenType);",
+									"pm.environment.set(\"expiresIn\", jsonResponse.expiresIn);",
+									"",
+									"// Opcional: mostrar un mensaje en consola confirmando que se guardaron",
+									"console.log(\"✅ Tokens guardados en variables de entorno\");",
+									"console.log(\"accessToken: \" + jsonResponse.accessToken);",
+									"console.log(\"refreshToken: \" + jsonResponse.refreshToken);",
+									"console.log(\"tokenType: \" + jsonResponse.tokenType);",
+									"console.log(\"expiresIn: \" + jsonResponse.expiresIn);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1234567890llkoiujshdyftrgbckshhhdiueyrtppoamdshdtr",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"diego@gmail.com\",\n    \"password\":\"diego\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/customers/iam/token",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"customers",
+								"iam",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_administrator_token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Verificar que la respuesta es 200",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Parsear el JSON de la respuesta",
+									"const jsonResponse = pm.response.json();",
+									"",
+									"// Extraer los valores del JSON y guardarlos en variables de entorno",
+									"pm.environment.set(\"accessToken\", jsonResponse.accessToken);",
+									"pm.environment.set(\"refreshToken\", jsonResponse.refreshToken);",
+									"pm.environment.set(\"tokenType\", jsonResponse.tokenType);",
+									"pm.environment.set(\"expiresIn\", jsonResponse.expiresIn);",
+									"",
+									"// Opcional: mostrar un mensaje en consola confirmando que se guardaron",
+									"console.log(\"✅ Tokens guardados en variables de entorno\");",
+									"console.log(\"accessToken: \" + jsonResponse.accessToken);",
+									"console.log(\"refreshToken: \" + jsonResponse.refreshToken);",
+									"console.log(\"tokenType: \" + jsonResponse.tokenType);",
+									"console.log(\"expiresIn: \" + jsonResponse.expiresIn);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"marisol.varela@gmail.com\",\n    \"password\":\"marisol\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/customers/iam/token",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"customers",
+								"iam",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"item": [
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n     \"accessToken\":\"{{accessToken}}\",\n     \"refreshToken\": \"{{refreshToken}}\"\n   \n}\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root}}/customers/iam/logout",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"customers",
+								"iam",
+								"logout"
 							]
 						}
 					},

@@ -13,7 +13,8 @@ public record UpdateCustomerCommand(
         AddressCommand billingAddress,
         AddressCommand shippingAddress,
         String phoneNumber,
-        String emailAddress
+        String emailAddress,
+        String password
 ) {
     @Builder
     public record AddressCommand(

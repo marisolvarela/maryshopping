@@ -3,6 +3,7 @@ package es.maryshopping.backend.customers.usecases.get_customer.infrastructure.r
 import es.maryshopping.backend.customers.usecases.get_customer.application.GetCustomerService;
 import es.maryshopping.backend.shared_kernel.internal_api.customer.application.GetCustomerQuery;
 import es.maryshopping.backend.shared_kernel.internal_api.customer.application.GetCustomerResult;
+import es.maryshopping.backend.shared_kernel.security.CustomerOwnershipValidator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +16,16 @@ import java.util.UUID;
 @RequestMapping("/customers")
 public class GetCustomerController {
     private final GetCustomerService getCustomerService;
+    private final CustomerOwnershipValidator customerOwnershipValidator;
 
-    public GetCustomerController(GetCustomerService getCustomerService) {
+    public GetCustomerController(GetCustomerService getCustomerService,
+                                 CustomerOwnershipValidator customerOwnershipValidator) {
         this.getCustomerService = getCustomerService;
+        this.customerOwnershipValidator = customerOwnershipValidator;
     }
     @GetMapping("/{customerId}")
     public ResponseEntity<GetCustomerResponse> proceed(@PathVariable UUID customerId){
+        customerOwnershipValidator.validate(customerId);
         GetCustomerQuery query = mapFromPathToQuery(customerId);
         GetCustomerResult result = getCustomerService.proceed(query);
         GetCustomerResponse response = mapFromResultToResponse(result);

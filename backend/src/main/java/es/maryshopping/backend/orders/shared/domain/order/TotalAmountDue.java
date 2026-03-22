@@ -9,8 +9,8 @@ public record TotalAmountDue(BigDecimal value) {
         if (value == null) {
             throw new BusinessRuleException("TotalAmountDue cannot be null");
         }
-        if (value.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new BusinessRuleException("TotalAmountDue must be greater than 0");
+        if (value.compareTo(BigDecimal.ZERO) < 0) {
+            throw new BusinessRuleException("TotalAmountDue cannot be negative");
         }
     }
 }

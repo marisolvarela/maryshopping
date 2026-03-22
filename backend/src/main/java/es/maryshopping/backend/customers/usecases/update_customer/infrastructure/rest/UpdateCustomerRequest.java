@@ -7,7 +7,8 @@ public record UpdateCustomerRequest(
         AddressRequest billingAddress,
         AddressRequest shippingAddress,
         String phoneNumber,
-        String emailAddress
+        String emailAddress,
+        String password
 ) {
     public record AddressRequest(
             String street,

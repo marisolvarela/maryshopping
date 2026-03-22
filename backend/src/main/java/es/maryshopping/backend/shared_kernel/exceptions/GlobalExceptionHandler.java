@@ -12,6 +12,16 @@ public class GlobalExceptionHandler {
         return  ResponseEntity.status(400).body(exception.getMessage());
     }
 
+    @ExceptionHandler({AuthenticationException.class})
+    ResponseEntity<String> unauthorized(Exception exception){
+        return ResponseEntity.status(401).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({CustomerDataAccessForbiddenException.class})
+    ResponseEntity<String> forbidden(Exception exception){
+        return ResponseEntity.status(403).body(exception.getMessage());
+    }
+
     @ExceptionHandler({BusinessRuleException.class,DuplicatedEntityException.class})
     ResponseEntity<String> conflict(Exception exception){
         return  ResponseEntity.status(409).body(exception.getMessage());

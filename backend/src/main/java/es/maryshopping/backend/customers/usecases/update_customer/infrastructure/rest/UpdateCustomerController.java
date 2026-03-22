@@ -3,6 +3,7 @@ package es.maryshopping.backend.customers.usecases.update_customer.infrastructur
 import es.maryshopping.backend.customers.usecases.update_customer.application.UpdateCustomerCommand;
 import es.maryshopping.backend.customers.usecases.update_customer.application.UpdateCustomerResult;
 import es.maryshopping.backend.customers.usecases.update_customer.application.UpdateCustomerService;
+import es.maryshopping.backend.shared_kernel.security.CustomerOwnershipValidator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +13,16 @@ import java.util.UUID;
 @RequestMapping("/customers")
 public class UpdateCustomerController {
     private final UpdateCustomerService updateCustomerService;
+    private final CustomerOwnershipValidator customerOwnershipValidator;
 
-    public UpdateCustomerController(UpdateCustomerService updateCustomerService) {
+    public UpdateCustomerController(UpdateCustomerService updateCustomerService,
+                                    CustomerOwnershipValidator customerOwnershipValidator) {
         this.updateCustomerService = updateCustomerService;
+        this.customerOwnershipValidator = customerOwnershipValidator;
     }
     @PutMapping("/{customerId}")
     public ResponseEntity<UpdateCustomerResponse> proceed(@PathVariable UUID customerId, @RequestBody UpdateCustomerRequest request) {
+        customerOwnershipValidator.validate(customerId);
         UpdateCustomerCommand command = mapFromRequestToCommand(customerId, request);
         UpdateCustomerResult result = updateCustomerService.proceed(command);
         UpdateCustomerResponse response = mapFromResultToResponse(result);
@@ -50,6 +55,7 @@ public class UpdateCustomerController {
                 .shippingAddress(shippingAddress)
                 .phoneNumber(request.phoneNumber())
                 .emailAddress(request.emailAddress())
+                .password(request.password())
                 .build();
     }
     private UpdateCustomerResponse mapFromResultToResponse(UpdateCustomerResult result) {

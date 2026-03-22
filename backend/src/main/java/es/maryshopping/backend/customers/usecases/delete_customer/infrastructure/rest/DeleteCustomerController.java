@@ -3,6 +3,7 @@ package es.maryshopping.backend.customers.usecases.delete_customer.infrastructur
 import es.maryshopping.backend.customers.usecases.delete_customer.application.DeleteCustomerCommand;
 import es.maryshopping.backend.customers.usecases.delete_customer.application.DeleteCustomerResult;
 import es.maryshopping.backend.customers.usecases.delete_customer.application.DeleteCustomerService;
+import es.maryshopping.backend.shared_kernel.security.CustomerOwnershipValidator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +16,16 @@ import java.util.UUID;
 @RequestMapping("/customers")
 public class DeleteCustomerController {
     private final DeleteCustomerService deleteCustomerService;
+    private final CustomerOwnershipValidator customerOwnershipValidator;
 
-    public DeleteCustomerController(DeleteCustomerService deleteCustomerService) {
+    public DeleteCustomerController(DeleteCustomerService deleteCustomerService,
+                                    CustomerOwnershipValidator customerOwnershipValidator) {
         this.deleteCustomerService = deleteCustomerService;
+        this.customerOwnershipValidator = customerOwnershipValidator;
     }
     @DeleteMapping("/{customerId}")
     public ResponseEntity<DeleteCustomerResponse> proceed(@PathVariable UUID customerId){
+        customerOwnershipValidator.validate(customerId);
         DeleteCustomerCommand command = mapFromPathToCommand(customerId);
         DeleteCustomerResult result = deleteCustomerService.proceed(command);
         DeleteCustomerResponse response = mapFromResultToResponse(result);

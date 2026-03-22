@@ -7,12 +7,34 @@ spring:
   application:
     name: backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/maryshopping
-    username: maryshopping
-    password: maryshopping
+    url: jdbc:postgresql://localhost:31543/maryshopping_postgres
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   flyway:
-    enabled: true
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://auth.maryshopping.com/realms/maryshopping
+          jwk-set-uri: http://auth.maryshopping.com/realms/maryshopping/protocol/openid-connect/certs
+  #          issuer-uri: http://maryshopping-keycloak-service.keycloak.svc.cluster.local:8080/realms/maryshopping
+  #          jwk-set-uri: http://maryshopping-keycloak-service.keycloak.svc.cluster.local:8080/realms/maryshopping/protocol/openid-connect/certs 
+keycloak:
+  admin-client:
+    auth-server-url: http://auth.maryshopping.com/
+    domain: auth.maryshopping.com
+    realm: maryshopping
+    client-id: admin-cli
+    client-secret: lSq9IMhem9orWeoUL3QAa8efU3YMJmNo
+    grant-type: client_credentials
+  iam-client:
+    client-id: iam-client
+    realm: maryshopping
+    auth-server-url: http://auth.maryshopping.com/
+    client-secret: sl1AWY6lfVfduWDCYbEJLnloyHoNYjFo
+    grant-type: password      
 
 flywayconf:
   customers:
