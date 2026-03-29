@@ -13,7 +13,7 @@ public record GetCustomerResponse(
         String phoneNumber,
         String emailAddress,
         AddressResponse billingAddress,
-        AddressResponse ShippingAddress
+        AddressResponse shippingAddress
 ) {
     @Builder
 public record AddressResponse(

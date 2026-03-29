@@ -43,7 +43,7 @@ public class GetCustomerController {
                 .phoneNumber(result.phoneNumber())
                 .emailAddress(result.emailAddress())
                 .billingAddress(mapFromAddressFieldsToBillingAddressResponse(result))
-                .ShippingAddress(mapFromAddressFieldsToShippingAddressResponse(result))
+                .shippingAddress(mapFromAddressFieldsToShippingAddressResponse(result))
                 .build();
     }
 
