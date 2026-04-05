@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "Nuxtr.nuxtr-vscode",
+    "lukas-tr.materialdesignicons-intellisense"
+  ],
+  "unwantedRecommendations": ["octref.vetur"]
+}

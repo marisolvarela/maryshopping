@@ -1,0 +1,37 @@
+# ─── Dependencias ──────────────────────────────────────────────
+node_modules/
+
+# ─── Nuxt (archivos generados automáticamente) ────────────────
+.nuxt/
+.output/
+.data/
+.nitro/
+.cache/
+
+# ─── Variables de entorno (contienen secretos) ────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Logs ──────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# ─── Directorios de cobertura de tests ────────────────────────
+coverage/
+.nyc_output/
+
+# ─── IDE / editores ───────────────────────────────────────────
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Sistema operativo ────────────────────────────────────────
+.DS_Store
+Thumbs.db
