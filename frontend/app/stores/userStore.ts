@@ -67,10 +67,10 @@ export const useUserStore = defineStore(
       }
 
       const maxAge = expiresIn || 60 * 60 * 24 * 7;
-      const isProduction = !import.meta.dev;
+      const isSecure = globalThis.location?.protocol === 'https:';
       const tokenCookie = useCookie('auth-token', {
         httpOnly: false,
-        secure: isProduction,
+        secure: isSecure,
         sameSite: 'strict',
         maxAge,
       });
@@ -79,10 +79,10 @@ export const useUserStore = defineStore(
 
     function setRefreshToken(token: string) {
       refreshToken.value = token;
-      const isProduction = !import.meta.dev;
+      const isSecure = globalThis.location?.protocol === 'https:';
       const tokenCookie = useCookie('refresh-token', {
         httpOnly: false,
-        secure: isProduction,
+        secure: isSecure,
         sameSite: 'strict',
         maxAge: 60 * 60 * 24 * 30,
       });
