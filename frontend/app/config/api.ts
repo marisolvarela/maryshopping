@@ -9,7 +9,7 @@ export interface ApiConfig {
 }
 
 export const API_CONFIG: ApiConfig = {
-  baseUrl: 'http://localhost:8089',
+  baseUrl: '',
   contextPath: '/maryshopping',
   timeout: 10000,
 };
