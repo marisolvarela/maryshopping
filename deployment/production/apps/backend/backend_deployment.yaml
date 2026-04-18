@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maryshopping-backend
+  namespace: apps
+  labels:
+    app: maryshopping-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maryshopping-backend
+  template:
+    metadata:
+      labels:
+        app: maryshopping-backend
+    spec:
+      imagePullSecrets:
+        - name: ghcr-credentials
+      containers:
+        - name: backend
+          image: ghcr.io/marisolvarela/maryshopping/maryshopping-backend:20260405-2beddd8
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8089
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: "classpath:/application.yaml,/config/application.yaml"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      volumes:
+        - name: config
+          configMap:
+            name: maryshopping-backend-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maryshopping-backend
+  namespace: apps
+  labels:
+    app: maryshopping-backend
+spec:
+  selector:
+    app: maryshopping-backend
+  type: NodePort
+  ports:
+    - port: 8089
+      targetPort: 8089
+      nodePort: 31089

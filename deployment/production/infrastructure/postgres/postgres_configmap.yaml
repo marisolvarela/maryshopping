@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: maryshopping-postgres-config
+  namespace: postgres
+  labels:
+    app: maryshopping-postgres
+data:
+  POSTGRES_DB: maryshopping_postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres

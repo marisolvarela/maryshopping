@@ -1,0 +1,38 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  instances: 1
+  db:
+    vendor: postgres
+    host: maryshopping-postgres.postgres.svc.cluster.local
+    database: maryshopping_postgres
+    usernameSecret:
+      name: keycloak-db-secret
+      key: username
+    passwordSecret:
+      name: keycloak-db-secret
+      key: password
+  hostname:
+    hostname: auth.maryshopping.com
+  http:
+    httpEnabled: true
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+  additionalOptions:
+    - name: proxy-headers
+      value: "xforwarded"
+  unsupported:
+    podTemplate:
+      spec:
+        containers:
+          - env:
+              - name: KC_HOSTNAME
+                value: "http://auth.maryshopping.com"
+              - name: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
+                value: "true"

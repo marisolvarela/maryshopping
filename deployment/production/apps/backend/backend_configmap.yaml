@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: maryshopping-backend-config
+  namespace: apps
+  labels:
+    app: maryshopping-backend
+data:
+  application.yaml: |
+    server:
+      port: 8089
+      servlet:
+        context-path: /maryshopping
+
+    spring:
+      application:
+        name: backend
+      datasource:
+        url: jdbc:postgresql://maryshopping-postgres.postgres.svc.cluster.local:5432/maryshopping_postgres
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+      flyway:
+        enabled: true
+      security:
+        oauth2:
+          resourceserver:
+            jwt:
+              # issuer-uri debe coincidir con el claim "iss" del JWT (KC_HOSTNAME externo)
+              issuer-uri: http://auth.maryshopping.com/realms/maryshopping
+              # jwk-set-uri usa la URL interna del servicio Keycloak para obtener las claves
+              jwk-set-uri: http://keycloak-service.keycloak.svc.cluster.local:8080/realms/maryshopping/protocol/openid-connect/certs
+
+    cors:
+      allowed-origins:
+        - http://maryshopping.com
+        - https://maryshopping.com
+      max-age: 3600
+
+    keycloak:
+      admin-client:
+        auth-server-url: http://keycloak-service.keycloak.svc.cluster.local:8080/
+        domain: keycloak-service.keycloak.svc.cluster.local
+        realm: maryshopping
+        client-id: admin-cli
+        client-secret: lSq9IMhem9orWeoUL3QAa8efU3YMJmNo
+        grant-type: client_credentials
+      iam-client:
+        client-id: iam-client
+        realm: maryshopping
+        auth-server-url: http://keycloak-service.keycloak.svc.cluster.local:8080/
+        client-secret: sl1AWY6lfVfduWDCYbEJLnloyHoNYjFo
+        grant-type: password
+
+    flywayconf:
+      customers:
+        schemas:
+          - customers
+        locations:
+          - "classpath:customers/db/migration/postgresql"
+      orders:
+        schemas:
+          - orders
+        locations:
+          - "classpath:orders/db/migration/postgresql"
+      catalog:
+        schemas:
+          - catalog
+        locations:
+          - "classpath:catalog/db/migration/postgresql"
+      reports:
+        schemas:
+          - reports
+        locations:
+          - "classpath:reports/db/migration/postgresql"
